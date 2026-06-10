@@ -4,6 +4,23 @@ import logo from "../assets/icons/logo.png";
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
+  const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+
+  if (!element) return;
+
+  const navbarHeight = 120;
+
+  const elementPosition =
+    element.getBoundingClientRect().top + window.pageYOffset;
+
+  window.scrollTo({
+    top: elementPosition - navbarHeight,
+    behavior: "smooth",
+  });
+
+  setMobileMenu(false);
+};
 
   return (
 <header className="relative z-50 w-full pt-4 overflow-hidden">
@@ -66,33 +83,36 @@ export default function Navbar() {
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center gap-8 lg:gap-10">
-              <a
-                href="#"
-                className="text-sm text-white transition hover:text-orange-400"
-              >
-                Testimonials
-              </a>
+              <button
+  onClick={() => scrollToSection("testimonials")}
+  className="text-sm text-white transition hover:text-orange-400"
+>
+  Testimonials
+</button>
 
-              <a
-                href="#"
-                className="text-sm text-white transition hover:text-orange-400"
-              >
-                Pricing
-              </a>
+              <button
+  onClick={() => scrollToSection("pricing")}
+  className="text-sm text-white transition hover:text-orange-400"
+>
+  Pricing
+</button>
 
-              <a
-                href="#"
-                className="text-sm text-white transition hover:text-orange-400"
-              >
-                FAQs
-              </a>
+              <button
+  onClick={() => scrollToSection("faqs")}
+  className="text-sm text-white transition hover:text-orange-400"
+>
+  FAQs
+</button>
             </div>
           </div>
 
           {/* Right Side */}
           <div className="flex items-center">
             {/* Desktop Button */}
-            <button className="relative hidden md:block">
+            <button
+  onClick={() => scrollToSection("footer")}
+  className="relative hidden md:block"
+>
               {/* Button Glow */}
               <div
                 className="
@@ -178,66 +198,68 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenu && (
-          <div
-            className="
-              md:hidden
-              mt-4
-              border-t
-              border-white/10
-              pt-4
-              pb-2
-              flex
-              flex-col
-              gap-4
-              relative
-              z-10
-            "
-          >
-            <a
-              href="#"
-              className="text-white/80 text-sm hover:text-orange-400 transition"
-            >
-              Testimonials
-            </a>
+        {/* Mobile Menu */}
+{mobileMenu && (
+  <div
+    className="
+      md:hidden
+      mt-4
+      border-t
+      border-white/10
+      pt-4
+      pb-2
+      flex
+      flex-col
+      gap-4
+      relative
+      z-10
+    "
+  >
+    <button
+      onClick={() => scrollToSection("testimonials")}
+      className="text-left text-white/80 text-sm hover:text-orange-400 transition"
+    >
+      Testimonials
+    </button>
 
-            <a
-              href="#"
-              className="text-white/80 text-sm hover:text-orange-400 transition"
-            >
-              Pricing
-            </a>
+    <button
+      onClick={() => scrollToSection("pricing")}
+      className="text-left text-white/80 text-sm hover:text-orange-400 transition"
+    >
+      Pricing
+    </button>
 
-            <a
-              href="#"
-              className="text-white/80 text-sm hover:text-orange-400 transition"
-            >
-              FAQs
-            </a>
+    <button
+      onClick={() => scrollToSection("faqs")}
+      className="text-left text-white/80 text-sm hover:text-orange-400 transition"
+    >
+      FAQs
+    </button>
 
-            <button
-              className="
-                mt-2
-                w-full
-                flex
-                items-center
-                justify-center
-                gap-2
-                rounded-full
-                border
-                border-[#44405a]
-                bg-[#030112]
-                py-3
-                text-sm
-                font-medium
-                text-white
-              "
-            >
-              Enroll Now
-              <ChevronRight size={16} />
-            </button>
-          </div>
-        )}
+    <button
+      onClick={() => scrollToSection("footer")}
+      className="
+        mt-2
+        w-full
+        flex
+        items-center
+        justify-center
+        gap-2
+        rounded-full
+        border
+        border-[#44405a]
+        bg-[#030112]
+        py-3
+        text-sm
+        font-medium
+        text-white
+      "
+    >
+      Enroll Now
+      <ChevronRight size={16} />
+    </button>
+  </div>
+)}
       </nav>
     </div>
     </header>

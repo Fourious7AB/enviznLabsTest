@@ -14,13 +14,21 @@ export default function Home() {
       <Navbar />
       <Hero />
       <FunPage />
-      <Testimonials />      
+      <div id="testimonials">
+  <Testimonials />
+</div>     
       <MentorSection/>
-      <PricingSection />
+      <div id="pricing">
+  <PricingSection />
+</div>
       <WinnersSection/>
-      <FAQSection />
+      <div id="faqs">
+  <FAQSection />
+</div>
       <ChallengeHero />
-      <Footer />
+      <div id="footer">
+  <Footer />
+</div>
     </div>
   );
 }

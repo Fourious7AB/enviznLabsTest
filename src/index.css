@@ -28,7 +28,17 @@ body {
 
   background-size: 120px 120px;
 }
+html.lenis {
+  height: auto;
+}
 
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
 
 
 
