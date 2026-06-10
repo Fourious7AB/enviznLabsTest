@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import MentorSection from "../components/MentorSection";
 import WinnersSection from "../components/WinnersSection";
 import PricingSection from "../components/PricingSection";
+import SalesJourney from "../components/SalesJourney";
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#05010B] text-white">
@@ -16,7 +17,8 @@ export default function Home() {
       <FunPage />
       <div id="testimonials">
   <Testimonials />
-</div>     
+</div>   
+<SalesJourney />  
       <MentorSection/>
       <div id="pricing">
   <PricingSection />
