@@ -1,13 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import testimonials from "../data/testimonials";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+} from "lucide-react";
 
 export default function Testimonials() {
   const [cardsPerView, setCardsPerView] = useState(3);
   const [startIndex, setStartIndex] = useState(0);
+
+  // Play/Pause State
+  const [playingId, setPlayingId] = useState(null);
+
+  const togglePlay = (id) => {
+    setPlayingId((prev) =>
+      prev === id ? null : id
+    );
+  };
 
   useEffect(() => {
     const updateCardsPerView = () => {
@@ -22,7 +36,10 @@ export default function Testimonials() {
 
     updateCardsPerView();
 
-    window.addEventListener("resize", updateCardsPerView);
+    window.addEventListener(
+      "resize",
+      updateCardsPerView
+    );
 
     return () =>
       window.removeEventListener(
@@ -59,7 +76,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-6 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
 
@@ -81,7 +98,7 @@ export default function Testimonials() {
 
         {/* Cards */}
 
-        <div className="mt-20">
+        <div className="mt-16 px-16 ">
           <AnimatePresence mode="wait">
             <motion.div
               key={startIndex}
@@ -108,79 +125,123 @@ export default function Testimonials() {
                 gap-6
               "
             >
-              {visibleCards.map((item) => (
-                <motion.div
-                  key={item.id}
-                  whileHover={{
-                    scale: 1.05,
-                  }}
-                  transition={{
-                    duration: 0.25,
-                  }}
-                  className="
-                    relative
-                    rounded-3xl
-                    overflow-hidden
-                    cursor-pointer
+             {visibleCards.map((item) => (
+  <motion.div
+    key={item.id}
+    whileHover={{ y: -5 }}
+    transition={{ duration: 0.25 }}
+    className="
+  relative
+  rounded-3xl
+  overflow-hidden
+  cursor-pointer
 
-                    h-[380px]
-                    md:h-[450px]
-                    lg:h-[520px]
-                  "
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="
-                      w-full
-                      h-full
-                      object-cover
-                    "
-                  />
+  gap-6
 
-                  <div className="absolute inset-0 bg-black/20" />
+  h-[320px]
+  md:h-[320px]
+  lg:h-[420px]
+  md:w-[310px]
+"
+  >
+    <img
+      src={item.image}
+      alt={item.name}
+      className="
+        w-full
+        h-full
+        object-cover
+      "
+    />
 
-                  {/* Play Button */}
+    {/* Dark Overlay */}
+    <div className="absolute inset-0 bg-black/30" />
 
-                  <div
-                    className="
-                      absolute
-                      inset-0
-                      flex
-                      items-center
-                      justify-center
-                    "
-                  >
-                    <div
-                      className="
-                        w-16
-                        h-16
-                        md:w-20
-                        md:h-20
-                        rounded-full
-                        bg-white/25
-                        backdrop-blur-md
-                        flex
-                        items-center
-                        justify-center
-                      "
-                    >
-                      <Play
-                        size={26}
-                        fill="white"
-                      />
-                    </div>
-                  </div>
+    {/* Glass Play Button - Always Visible */}
+    <div
+      className="
+        absolute
+        inset-0
+        flex
+        items-center
+        justify-center
+        z-20
+      "
+    >
+      <button
+  onClick={() => togglePlay(item.id)}
+  className="
+    relative
 
-                  {/* Name */}
+    w-16
+    h-16
 
-                  <div className="absolute bottom-6 left-6">
-                    <h3 className="text-xl font-semibold">
-                      {item.name}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
+    md:w-20
+    md:h-20
+
+    rounded-full
+
+    bg-white/[0.04]
+    backdrop-blur-3xl
+
+    border
+    border-white/15
+
+    flex
+    items-center
+    justify-center
+
+    transition-all
+    duration-300
+
+    hover:scale-110
+    hover:bg-white/[0.08]
+
+    shadow-[0_8px_30px_rgba(255,255,255,0.08)]
+  "
+>
+  {/* Glass reflection */}
+  <div
+    className="
+      absolute
+      inset-x-2
+      top-2
+      h-[35%]
+
+      rounded-full
+
+      bg-gradient-to-b
+      from-white/30
+      via-white/10
+      to-transparent
+    "
+  />
+
+  {playingId === item.id ? (
+    <Pause
+      size={26}
+      strokeWidth={2.5}
+      className="relative z-10 text-white"
+    />
+  ) : (
+    <Play
+      size={26}
+      strokeWidth={2.5}
+      className="relative z-10 text-white ml-1"
+      fill="white"
+    />
+  )}
+</button>
+    </div>
+
+    {/* Name */}
+    <div className="absolute bottom-4 left-4 z-20">
+      <h3 className="text-white font-semibold text-lg">
+        {item.name}
+      </h3>
+    </div>
+  </motion.div>
+))}
             </motion.div>
           </AnimatePresence>
 
