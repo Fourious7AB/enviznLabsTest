@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: #05010b;
-  font-family: Inter, sans-serif;
   overflow-x: hidden;
 }
 
@@ -20,6 +28,9 @@ body {
 
   background-size: 120px 120px;
 }
+
+
+
 
 /* Navbar Button Glow */
 .enroll-glow {

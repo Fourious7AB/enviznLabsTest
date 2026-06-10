@@ -6,7 +6,7 @@ export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
-<header className="relative z-50 w-full pt-4">
+<header className="relative z-50 w-full pt-4 overflow-hidden">
   <div className="container-custom">
       {/* Background Glow */}
       <div className="absolute left-1/2 top-0 -translate-x-1/2 pointer-events-none">

@@ -5,15 +5,16 @@ import VideoSection from "./VideoSection";
 export default function Hero() {
   return (
     <>
-      {/* Grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+    <section className="relative overflow-hidden">
+    {/* Grid */}
+    <div className="absolute inset-0 bg-grid-pattern opacity-30" />
 
-      {/* Main Glow */}
-      <div className="absolute left-1/2 top-0 -translate-x-1/2">
-        <div className="w-[900px] h-[900px] rounded-full bg-orange-500/20 blur-[180px]" />
-      </div>
+    {/* Main Glow */}
+    <div className="absolute left-1/2 top-0 -translate-x-1/2 pointer-events-none">
+      <div className="w-[500px] sm:w-[700px] lg:w-[900px] aspect-square rounded-full bg-orange-500/20 blur-[120px]" />
+    </div>
 
-      <section className="relative z-10 max-w-6xl mx-auto px-6 pt-20 text-center">
+    <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20 text-center">
 
         <div className="inline-flex px-4 py-1 rounded-full border border-orange-400/20 bg-orange-500/10 text-xs">
           ⚡ Limited Seats
@@ -48,6 +49,7 @@ export default function Hero() {
         <CTAButtons />
 
         <VideoSection />
+      </div>
       </section>
     </>
   );
