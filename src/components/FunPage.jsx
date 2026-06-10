@@ -3,6 +3,12 @@ import {
   BarChart3,
   LayoutGrid,
 } from "lucide-react";
+import avatar1 from "../assets/images/avatar-1.png";
+import avatar2 from "../assets/images/avatar-2.png";
+import avatar3 from "../assets/images/avatar-3.png";
+import avatar4 from "../assets/images/avatar-4.png";
+import avatar5 from "../assets/images/avatar-5.png";
+import avatar6 from "../assets/images/avatar-6.png";    
 
 export default function FunPage() {
   const cards = [
@@ -85,12 +91,50 @@ export default function FunPage() {
           {/* Right Side Avatars */}
           {/* Right Side Avatars */}
 <div className="relative h-[500px] hidden md:block">
-  <div className="absolute top-0 left-10 w-36 h-36 rounded-full bg-pink-200 border-4 border-white/20" />
-  <div className="absolute top-5 right-10 w-32 h-32 rounded-full bg-violet-200 border-4 border-white/20" />
-  <div className="absolute top-24 left-1/2 -translate-x-1/2 w-52 h-52 rounded-full bg-neutral-200 border-4 border-white/20" />
-  <div className="absolute bottom-32 left-0 w-32 h-32 rounded-full bg-cyan-200 border-4 border-white/20" />
-  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full bg-yellow-200 border-4 border-white/20" />
-  <div className="absolute bottom-32 right-0 w-36 h-36 rounded-full bg-sky-200 border-4 border-white/20" />
+  <div className="absolute top-0 left-10 w-36 h-36 rounded-full bg-pink-200 border-4 border-white/20" > <img
+      src={avatar1}
+      alt="avatar"
+      className="w-full h-full object-cover"
+    /></div>
+  <div className="absolute top-5 right-10 w-32 h-32 rounded-full bg-violet-200 border-4 border-white/20" >
+    <img
+      src={avatar2}
+      alt="avatar"
+      className="w-full h-full p-2.5 object-cover"
+    />
+  </div>
+  <div className="absolute top-24 left-1/2 -translate-x-1/2 w-52 h-52 rounded-full bg-neutral-200 border-4 border-white/20" >
+    <img
+        src={avatar6}
+        alt="avatar"
+        className="w-full h-full object-cover"
+    />
+  </div>
+  <div className="absolute bottom-32 left-0 w-32 h-32 rounded-full bg-cyan-200 border-4 border-white/20" >
+  <img
+        src={avatar3}
+        alt="avatar"
+        className="w-full h-full object-cover"
+    
+  >
+  </img>
+  </div>
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full bg-yellow-200 border-4 border-white/20" >
+  <img 
+        src={avatar4}
+        alt="avatar"
+        className="w-full h-full p-2 object-cover"
+  >
+  </img>
+  </div>
+  <div className="absolute bottom-32 right-0 w-36 h-36 rounded-full bg-sky-200 border-4 border-white/20" >
+    <img
+    src={avatar5}
+    alt="avatar"
+    className="w-full h-full object-cover"
+    >
+    </img>
+  </div>
 </div>
         </div>
 
